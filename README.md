@@ -1,80 +1,71 @@
 # Compiler Construction Lab Assignments 🛠️
 
-This repository contains the practical assignments for the Compiler Construction Laboratory course. These exercises utilize **Lex** (Lexical Analyzer Generator) and **Yacc/Bison** (Parser Generator) to implement various components of a compiler.
+This repository contains the practical assignments for the **Compiler Construction Laboratory** course. These exercises primarily focus on implementing components of a compiler using **Lex** (Lexical Analyzer Generator) and **Yacc/Bison** (Parser Generator).
 
 ---
 
 ## Student Details
 
-* [cite_start]**Name:** Sujal Junghare [cite: 4]
-* [cite_start]**PRN:** 22070521089 [cite: 5]
-* [cite_start]**Department:** CSE [cite: 7]
-* [cite_start]**Division:** C [cite: 6]
-* [cite_start]**Semester:** VII [cite: 8]
-* [cite_start]**Course Code:** T7478 [cite: 9]
-* [cite_start]**Course Name:** Compiler Construction Lab [cite: 3]
+* **Name:** Sujal Junghare
+* **PRN:** 22070521089
+* **Department:** CSE
+* **Division:** C
+* **Semester:** VII
+* **Course Code:** T7478
+* **Course Name:** Compiler Construction Lab
 
 ---
 
 ## Assignments List
 
-The following is a list of the practical assignments completed for the course:
+Below is a summary of the practical assignments completed:
 
-### 1. Number to Digit Conversion (Lex)
-* **Objective:** To recognize the English word representation of digits (zero through nine, in both lowercase and uppercase) and print their corresponding numerical digit.
-* **Example Input/Output:** `one` $\to$ `1`, `ZERO` $\to$ `0`
+### 1. Lexical Analyzer for Word-to-Digit Conversion
+* **Objective:** To recognize the English word representation of digits (e.g., "one", "ONE", "zero", "ZERO") and print their corresponding numerical digit (e.g., 1, 0).
 
-### 2. File Statistics Counter (Lex)
-* [cite_start]**Objective:** To count the number of lines, spaces, tabs, words, and characters from an input sentence or file. [cite: 11]
+### 2. Input File Statistics Counter
+* **Objective:** To count various statistics from an input file or text, including the number of **lines**, **spaces**, **tabs**, **words**, and total **characters**.
 
-### 3. Word Counter Starting with 'A' (Lex)
-* [cite_start]**Objective:** To count the total number of words in the input text that start with the letter 'A' or 'a'. [cite: 12]
+### 3. Word Counter Starting with 'A'
+* **Objective:** To count the total number of words in the input text that begin with the letter 'A' or 'a'.
 
-### 4. Case Conversion (Lex)
-* [cite_start]**Objective:** To convert all **lowercase** letters in the input to **uppercase** and all **uppercase** letters to **lowercase** using ASCII value manipulation. [cite: 13]
+### 4. Case Conversion
+* **Objective:** To implement a program that converts all **lowercase** characters to **uppercase** and all **uppercase** characters to **lowercase**.
 
-### 5. Decimal to Hexadecimal Conversion (Lex)
-* [cite_start]**Objective:** To recognize decimal numbers from the input and convert them into their equivalent hexadecimal representation. [cite: 14]
+### 5. Decimal to Hexadecimal Conversion
+* **Objective:** To read decimal numbers from the input and convert them into their equivalent **hexadecimal** format (e.g., $935 \to 0\text{x}3\text{A}7$).
 
-### 6. Line Ending Test (Lex)
-* [cite_start]**Objective:** To test if an input line ends with the specific string `com` (e.g., in an email address or URL). [cite: 15]
+### 6. Line Ending Tester
+* **Objective:** To test and print lines from the input that end with the specific string `"com"`.
 
 ### 7. Postfix Expression Evaluation (Lex & Yacc)
-* [cite_start]**Objective:** To implement a basic calculator capable of evaluating **postfix expressions** using Lex for tokenization and Yacc for parsing and evaluation. [cite: 16]
+* **Objective:** To implement a parser for evaluating **postfix arithmetic expressions** (Reverse Polish Notation).
 
 ### 8. Simple Desk Calculator with Error Recovery (Lex & Yacc)
-* [cite_start]**Objective:** To create a functional desk calculator that handles arithmetic expressions with operators (`+`, `-`, `*`, `/`) and includes error recovery mechanisms for invalid syntax. [cite: 17]
+* **Objective:** To build a fully functional desk calculator that handles basic arithmetic operations ($+$, $-$, $*$, $/$), parentheses, and includes an **error recovery** mechanism.
 
 ### 9. Parser for FOR Loop (Lex & Yacc)
-* [cite_start]**Objective:** To implement a parser that checks the syntax and validates the structure of a simplified **FOR loop** statement. [cite: 18]
+* **Objective:** To create a parser that analyzes and validates the basic syntax structure of a **FOR loop** statement.
 
 ### 10. Intermediate Code (IC) Generator (Lex & Yacc)
-* [cite_start]**Objective:** To implement a simple intermediate code generator (using Three-Address Code) for basic arithmetic expressions, demonstrating the intermediate phase of compilation. [cite: 19]
+* **Objective:** To implement a program that generates **Three-Address Code (TAC)** as an intermediate representation for arithmetic expressions, following the order of precedence. (e.g., $a + b / c * d \to t1 = b / c; t2 = t1 * d; t3 = a + t2$)
 
 ---
 
-## Compilation and Execution
+## Compilation and Execution Guide
 
-The general workflow for compiling and running these assignments involves the following steps in a Unix-like environment:
+The general procedure for compiling and executing these Lex and Yacc programs on a Unix-like system (like Linux) is as follows:
 
-1.  **Generate Lexer (C code):**
-    ```bash
-    lex <filename>.l 
-    ```
-2.  **Generate Parser (C code and Header for Yacc assignments):**
-    ```bash
-    yacc -d <filename>.y # Use only for Yacc/Bison files (e.g., practical7_1089.y)
-    ```
-3.  **Compile the generated C code:**
-    ```bash
-    # For Lex-only files
-    cc lex.yy.c -ll -o <output_name>
-    # For Lex & Yacc files
-    gcc lex.yy.c y.tab.c -ll -o <output_name> 
-    ```
-4.  **Execute the program:**
-    ```bash
-    ./<output_name>
-    ```
+| Step | Command for Lex-Only Files | Command for Lex & Yacc Files | Description |
+| :--- | :--- | :--- | :--- |
+| **1. Lex** | `lex <filename>.l` | `lex <filename>.l` | Generates the lexical analyzer C file (`lex.yy.c`). |
+| **2. Yacc** | N/A | `yacc -d <filename>.y` | Generates the parser C file (`y.tab.c`) and token header (`y.tab.h`). |
+| **3. Compile** | `cc lex.yy.c -ll -o <output>` | `gcc lex.yy.c y.tab.c -ll -o <output>` | Compiles the generated C files and links the Lex library (`-ll`). |
+| **4. Execute** | `./<output>` | `./<output>` | Runs the compiled executable. |
 
-**Note:** The output file names in the document (e.g., `a.out`, `postfix`, `calc`, `prac9`, `prac10`) vary depending on the practical.
+**Example Compilation (for Postfix Evaluator):**
+```bash
+yacc -d postfix_1089.y
+lex postfix_1089.l
+gcc lex.yy.c y.tab.c -o postfix -ll
+./postfix
